@@ -1,15 +1,15 @@
 <?php
-$vetor = array();
-for ($i = 0; $i < 40; $i++) {
-    $vetor[] = rand(1, 50);
-}
-echo "Os valores: ";
-foreach ($vetor as $valor) 
-{
-    echo "$valor ";    
-}
-$menor = min($vetor);
-echo "<br>";
-echo "O menor valor é: ", $menor;
 
+$vetor = array_map(fn() => rand(1, 50), range(1, 40));
+$menor_valor = $vetor[0];
+echo "Os valores: ";
+
+foreach ($vetor as $valor)
+{
+    echo "$valor,";
+    if ($valor < $menor_valor) {
+        $menor_valor = $valor;
+    }
+}
+echo "O menor valor no vetor é: $menor_valor";
 ?>
